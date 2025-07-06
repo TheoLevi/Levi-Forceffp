@@ -31,3 +31,7 @@ Configure everything in config.lua to your liking
 Perfect for immersive servers looking to enhance realism
 
 
+Changelogs 1.0.1:
+- Added Disable Car Radio (No More Glitch while Aiming)
+- The problem of missing Force First Person in the car has been fixed.
+
