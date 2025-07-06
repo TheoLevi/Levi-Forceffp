@@ -14,7 +14,6 @@ CreateThread(function()
         local aiming = IsPlayerFreeAiming(playerId) or IsPedShooting(playerPed)
         local inVehicle = IsPedInAnyVehicle(playerPed, false)
         local vehicle = inVehicle and GetVehiclePedIsIn(playerPed, false)
-        local isBike = inVehicle and IsThisModelABike(GetEntityModel(vehicle))
         local isCar = inVehicle and not isBike and not IsThisModelAHeli(GetEntityModel(vehicle))
         local isHeli = inVehicle and IsThisModelAHeli(GetEntityModel(vehicle))
 
@@ -67,3 +66,21 @@ CreateThread(function()
         ::continue::
     end
 end)
+
+-- Disable Car Radio
+
+CreateThread(function()
+    while true do
+        Wait(1000)
+        local ped = PlayerPedId()
+        if IsPedInAnyVehicle(ped, false) then
+            SetUserRadioControlEnabled(false)
+            if GetPlayerRadioStationName() ~= nil then
+                SetVehRadioStation(GetVehiclePedIsIn(PlayerPedId()),"OFF")
+            end
+        end
+    end
+end)
+
+
+
